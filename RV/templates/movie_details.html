@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Index</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='static/style.css'>
+    <script>
+        $(document).ready(function(){
+            $("#log").hide();
+            $("#sign").hide();
+            $("#login").hide();
+            $("#sign-up").hide();
+
+            $("#write").click(function(){
+                $("#log").show();
+                $("#sign").show();
+                $("#login").show();
+                $("#sign-up").hide();
+                $("#reviews").hide();
+                $("#body").hide();
+                $("#log").css("background","#4af0f0");
+                $("#log").click(function(){
+                    $("#log").show();
+                    $("#log").css("background","#4af0f0");
+                    $("#sign").css("background","white");
+                    $("#login").show();
+                    $("#sign-up").hide();
+
+                });
+                $("#sign").click(function(){
+                    $("#sign").show();
+                    $("#sign").css("background","#4af0f0");
+                    $("#log").css("background","white");
+                    $("#sign-up").show();
+                    $("#login").hide();
+
+                });
+                $("#lcancel").click(function(){
+                    $("#log").hide();
+                    $("#sign").hide();
+                    $("#login").hide();
+                    $("#sign-up").hide();
+                    $("#reviews").show();
+                    $("#body").show();
+    
+                })
+                $("#scancel").click(function(){
+                    $("#log").hide();
+                    $("#sign").hide();
+                    $("#login").hide();
+                    $("#sign-up").hide();
+                    $("#reviews").show();
+                    $("#body").show();
+                    $("#sign").css("background","white");
+    
+                })
+                
+            })
+        });
+    </script>
+</head>
+<body>
+    {% block body %}
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <a style="float: right; margin-top: 10px;" href="/"><button class="btn btn-">Home</button></a>
+    </div>
+    <div class="col-md-12 col-sm-12 col-xs-12" id="body" style="padding-top: 20px;">
+        {% for movie in movie_detail %}
+    <table>
+        <tr><td rowspan="5"><img src="{{movie.poster.url}}" style="height: 230px; width: 180px;"></td></tr>
+        <tr><td style="padding-left: 20px; font-size: xx-large;">{{movie.movie_name}}</td></tr>
+        <tr><td style="padding-left: 20px;"> <div style="background-color: rgb(9, 138, 9); text-align: center; height: 20px; width:40px; border-radius:10px; color:white;">4 <i class="fa fa-star"></i> </div> 1,283 Ratings</td></tr>
+        <tr><td style="padding-left: 20px;">Cast:&nbsp;{{movie.cast}}</td></tr>
+        <tr><td style="padding-left: 20px; font-weight: bold;">Release date:&nbsp;{{movie.release_date}} </td></tr>
+        <tr><td><a style="cursor: pointer;" id="write">write a review <i class="fa fa-pencil"></i></a></i>  </td></tr>
+    </table>
+    </div>
+    {% endfor %}
+    <div class="col-md-4 col-sm-12 col-xs-12"></div>
+    <div class="col-md-4 col-sm-12 col-xs-12">
+
+        <div class="divs" style="margin-bottom: 50px;">
+        
+        <div id="log" style="display: inline-block; float: left; padding: 10px 80px;"><label>Login</label></div> <div id="sign"  style="padding: 10px 80px; display: inline-block; float: left;"><label>Sign Up</label></div> 
+        
+        </div> <br>
+        <div id="login" style="margin-top: 20px;">
+        <form  method="POST" action="mlogin">
+            {% csrf_token %}
+            <label>Email.</label>
+            <input type="email" name="lemail" class="form-control" placeholder="email" required>
+            <label>Password.</label>
+            <input type="password" name="lpwd" class="form-control" placeholder="password" required>
+            <input type="submit" class="btn btn-success btn-block" value="Login" style="margin-top: 20px;">
+            
+
+        </form>
+            <button style="margin-top: 20px;"  id="lcancel" class="btn btn-danger btn-block">Cnacel</button>
+        </div>
+
+        <div id="sign-up" style="margin-top: 20px;">
+        <form method="POST" action="mregister">
+            {% csrf_token %}
+            <label>Name.</label>
+            <input type="text" class="form-control" name="name" placeholder="enter your name" required>
+            <label>Email.</label>
+            <input type="email" class="form-control" name="email" placeholder="email" required>
+            <label>Phone no.</label>
+            <input type="text" class="form-control" name="phone" placeholder="phone no" required>
+            <label>Password.</label>
+            <input type="password" class="form-control" name="pwd" placeholder="password" required>
+            <input type="submit" class="btn btn-primary btn-block" value="Register" style="margin-top: 20px;">
+
+        </form>
+        <button style="margin-top: 20px;" id="scancel" class="btn btn-danger btn-block">Cnacel</button>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-12 col-xs-12"></div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12" style="padding-top: 20px;">
+        <div id="reviews" style="margin-top: 30px;">
+            <h1 style="font-weight: bold;">Reviews!</h1>
+            <table>
+                <tr><td style="padding-left: 20px; font-weight: bold;"><i class="fa fa-user-circle-o"></i>&nbsp;Rahul Shing</td></tr>
+                <tr><td style="padding-left: 20px;"><div style="background-color: rgb(9, 138, 9); text-align: center; height: 20px; width:40px; border-radius:10px; color:white;">4 <i class="fa fa-star"></i> </div></td></tr>
+    
+                <tr><td style="padding-left: 20px; font-weight: bold;">Title</td></tr>
+                <tr><td style="padding-left: 20px;">decriptions</td></tr>
+    
+    
+            </table>
+        </div>
+        </div>
+    
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,68 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Poppins;
+}
+.contest{
+    background-image: url(img/movies.jpg);
+}
+.text{
+    color: white;
+    font-family: Poppins;
+    font-size: xx-large;
+    border:1px solid rgb(236, 194, 6);
+    border-radius: 10px;
+    
+
+}
+.movies{
+    list-style: none;
+    display: inline;
+}
+/* .contest_btn{
+    height: 40px;
+    width: 300px;
+    color: white;
+    background-color:transparent
+    border-radius: 7px;
+    border-color: rgb(241, 94, 8) ;
+
+} */
+/* .contest_btn:hover{
+    background-color: rgb(241, 94, 8);
+    border-radius: 7px;
+    border-color: rgb(241, 94, 8) ;
+} */
+
+.inline{
+    width: 200px;
+}
+ul{
+    float: left;
+    list-style-type: none;
+}
+
+
+.divs{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#log{
+    /*border: 2px solid white;*/
+    padding: 10px 80px;
+    -webkit-box-shadow: 0px 13px 41px -2px rgba(74,240,240,1);
+-moz-box-shadow: 0px 13px 41px -2px rgba(74,240,240,1);
+box-shadow: 0px 13px 41px -2px rgba(74,240,240,1);
+}
+#sign{
+    text-align: center;
+    padding: 10px 80px;
+    -webkit-box-shadow: 0px 13px 41px -2px rgba(74,240,240,1);
+-moz-box-shadow: 0px 13px 41px -2px rgba(74,240,240,1);
+box-shadow: 0px 13px 41px -2px rgba(74,240,240,1);
+
+}
+#log,#sign{
+    display: inline;
+}

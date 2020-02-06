@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Index</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='static/style.css'>
+
+    <script>
+        $(document).ready(function(){
+            $("#log").hide();
+            $("#sign").hide();
+            $("#login").hide();
+            $("#sign-up").hide();
+            $("#contest").click(function(){
+                $("#log").show();
+                $("#log").css("background","#4af0f0");
+                $("#sign").css("background","white");
+                $("#sign-up").hide();
+                $("#sign").show();
+                $("#login").show();
+                
+                $("#movie_list").hide();
+                $("#log").click(function(){
+                    $("#log").show();
+                    $("#log").css("background","#4af0f0");
+                    $("#sign").css("background","white");
+                    $("#login").show();
+                    $("#sign-up").hide();
+
+                });
+                $("#sign").click(function(){
+                    $("#sign").show();
+                    $("#sign").css("background","#4af0f0");
+                    $("#log").css("background","white");
+                    $("#sign-up").show();
+                    $("#login").hide();
+
+                });
+
+
+
+
+            });
+            $("#lcancel").click(function(){
+                $("#log").hide();
+                $("#sign").hide();
+                $("#login").hide();
+                $("#sign-up").hide();
+                $("#movie_list").show();
+
+            })
+            $("#scancel").click(function(){
+                $("#log").hide();
+                $("#sign").hide();
+                $("#login").hide();
+                $("#sign-up").hide();
+                $("#movie_list").show();
+
+            })
+            $(".x").click(function(){
+                $("#log").show();
+                $("#log").css("background","#4af0f0");
+                $("#sign").css("background","white");
+                $("#sign-up").hide();
+                $("#sign").show();
+                $("#login").show();
+                
+                $("#movie_list").hide();
+                $("#log").click(function(){
+                    $("#log").show();
+                    $("#log").css("background","#4af0f0");
+                    $("#sign").css("background","white");
+                    $("#login").show();
+                    $("#sign-up").hide();
+
+                });
+                $("#sign").click(function(){
+                    $("#sign").show();
+                    $("#sign").css("background","#4af0f0");
+                    $("#log").css("background","white");
+                    $("#sign-up").show();
+                    $("#login").hide();
+
+                });
+
+
+
+
+            });
+            $("#lcancel").click(function(){
+                $("#log").hide();
+                $("#sign").hide();
+                $("#login").hide();
+                $("#sign-up").hide();
+                $("#movie_list").show();
+
+            })
+            $("#scancel").click(function(){
+                $("#log").hide();
+                $("#sign").hide();
+                $("#login").hide();
+                $("#sign-up").hide();
+                $("#movie_list").show();
+
+            })
+
+        });
+
+    </script>
+
+</head>
+<body>
+    {% block body %}
+     
+    <div class="contest" style="height: 200px; width: 100%; text-align: center; padding:30px 75px;">
+        <a id="contest" style="text-decoration: none; cursor: pointer;"><div class="text">Contest for Everyone!!
+            <p>Click to play!</p>
+        </div>
+        </>
+        
+    </div>
+
+
+    <div class="col-md-12 col-sm-12 col-xs-12" style="padding-top: 20px;">
+        <div class="divs" id="movie_list" style="text-align: center;">
+            {% for movies in movie %}
+
+            <div class="x">
+            <table style="float: left; margin-right:20px;">
+                <tr style="width: 110px;"><td><img src="{{movies.poster.url}}" style="height: 150px; width: 110px;"></td></tr>
+                <tr><td style="padding:10px 0px 10px 0px;">
+                    <div style="background-color: rgb(9, 138, 9); height: 20px; width:40px; border-radius:10px; color:white;"><i class="fa fa-star"></i> </div>
+                </td></tr>
+ 
+            </table>
+            </div>
+          
+            {% endfor %}
+          
+
+        </div>
+
+    </div>
+    <div class="col-md-4 col-sm-12 col-xs-12"></div>
+    <div class="col-md-4 col-sm-12 col-xs-12">
+
+        <div class="divs">
+        
+        <div id="log"><label>Login</label></div> <div id="sign"><label>Sign Up</label></div>
+        
+        </div>
+        <div id="login">
+        <form  method="POST" action="login">
+            {% csrf_token %}
+            <label>Email.</label>
+            <input type="email" name="lemail" class="form-control" placeholder="email" required>
+            <label>Password.</label>
+            <input type="password" name="lpwd" class="form-control" placeholder="password" required>
+            <input type="submit" class="btn btn-success btn-block" value="Login" style="margin-top: 20px;">
+            
+
+        </form>
+            <button style="margin-top: 20px;"  id="lcancel" class="btn btn-danger btn-block">Cnacel</button>
+        </div>
+
+        <div id="sign-up">
+        <form method="POST" action="register">
+            {% csrf_token %}
+            <label>Name.</label>
+            <input type="text" class="form-control" name="name" placeholder="enter your name" required>
+            <label>Email.</label>
+            <input type="email" class="form-control" name="email" placeholder="email" required>
+            <label>Phone no.</label>
+            <input type="text" class="form-control" name="phone" placeholder="phone no" required>
+            <label>Password.</label>
+            <input type="password" class="form-control" name="pwd" placeholder="password" required>
+            <input type="submit" class="btn btn-primary btn-block" value="Register" style="margin-top: 20px;">
+
+        </form>
+        <button style="margin-top: 20px;" id="scancel" class="btn btn-danger btn-block">Cnacel</button>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-12 col-xs-12"></div>
+    
+
+
+    {% endblock %}
+</body>
+</html>

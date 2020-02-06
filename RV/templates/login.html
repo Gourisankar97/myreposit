@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Index</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='static/style.css'>
+
+
+</head>
+<body>
+
+    <div class="col-md-4 col-sm-12 col-xs-12"></div>
+    <div class="col-md-4 col-sm-12 col-xs-12">
+        <span style="color: lawngreen;">{{msg}}</span>
+        <form  method="POST" action="login">
+            {% csrf_token %}
+            <label>Email.</label>
+            <input type="email" name="lemail" class="form-control" placeholder="email" required>
+            <label>Password.</label>
+            <input type="password" name="lpwd" class="form-control" placeholder="password" required>
+            <input type="submit" class="btn btn-success btn-block" value="Login" style="margin-top: 20px;">
+
+        </form>
+        </div>
+
+
+    </div>
+    <div class="col-md-4 col-sm-12 col-xs-12"></div>
+    
+
+
+    
+</body>
+</html>
